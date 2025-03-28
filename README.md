@@ -38,7 +38,8 @@ cd Mario
 | Jump | Space |
 
 ## 📸 Screenshots
-<img width="821" alt="MarioDemo" src="https://github.com/user-attachments/assets/bfe31fb5-413c-44db-ae2a-fb7d285c9e81" />
+<img width="3600" alt="1-1 Grid" src="https://github.com/user-attachments/assets/79f76ad4-de20-486c-b4db-feb2f1fc53c5" />
+
 
 
 ## 🔧 How to Build for Windows & Mac
