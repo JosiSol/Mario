@@ -51,7 +51,7 @@ cd Mario
 ## 📝 Future Improvements
 - **Custom animations and sound effects** for an immersive experience 
 - **More power-ups** (Fire Flower, Ice Flower etc.)
-- **Checkpoint and respawn system**  
+- **Checkpoint System**  
 - **Multiple stages and worlds** 
 - **Saving & loading system**
 - **Game Over Screen**
