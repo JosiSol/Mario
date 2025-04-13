@@ -6,7 +6,8 @@ Welcome to the **Super Mario Unity Clone**! This project is a recreation of the 
 ✅ **Classic Mario-style platforming** with running, jumping, and enemy interactions  
 ✅ **Side-scrolling levels** with pipes, bricks, and power-ups  
 ✅ **Enemy AI** that patrols the level    
-✅ **Optimized performance** for smooth gameplay    
+✅ **Optimized performance** for smooth gameplay   
+✅ **Classic Animations and Sound Effects** for an immersive experience 
 
 ## 🛠️ Technologies Used
 - **Unity**
@@ -49,7 +50,6 @@ cd Mario
 4. The game will be generated as an `.exe` (Windows) or `.app` (Mac)
 
 ## 📝 Future Improvements
-- **Custom animations and sound effects** for an immersive experience 
 - **More power-ups** (Fire Flower, Ice Flower etc.)
 - **Checkpoint System**  
 - **Multiple stages and worlds** 
