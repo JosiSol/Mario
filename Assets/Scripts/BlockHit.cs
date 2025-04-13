@@ -7,6 +7,13 @@ public class BlockHit : MonoBehaviour
     public int maxHits = -1;
     private bool animating;
     public GameObject item;
+    public new AudioSource audio;
+    public AudioClip blockHitSound;
+
+    void Awake()
+    {
+        audio = GetComponent<AudioSource>();
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!animating && maxHits != 0 && collision.gameObject.TryGetComponent(out Player player))
@@ -30,6 +37,7 @@ public class BlockHit : MonoBehaviour
         {
             Instantiate(item, transform.position, Quaternion.identity);
         }
+        audio.PlayOneShot(blockHitSound);
         StartCoroutine(Animate());
     }
     private IEnumerator Animate()

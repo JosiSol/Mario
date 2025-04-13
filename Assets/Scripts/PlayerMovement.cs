@@ -21,12 +21,15 @@ public class PlayerMovement: MonoBehaviour
     public bool running => Mathf.Abs(velocity.x) > 0.25f || Mathf.Abs(inputAxis) > 0.25f;
     private Vector2 velocity;
     private float inputAxis;
+    public new AudioSource audio;
+    public AudioClip jumpSound;
 
     public void Awake()
     {
         camera = Camera.main; 
         rigidbody = GetComponent<Rigidbody2D>();  
         collider = GetComponent<Collider2D>();
+        audio = GetComponent<AudioSource>();
     }
     private void OnEnable()
     {
@@ -108,6 +111,8 @@ public class PlayerMovement: MonoBehaviour
         if (Input.GetButtonDown("Jump")){
             velocity.y = jumpForce;
             jumping = true;
+            audio.clip = jumpSound;
+            audio.Play();
         }
     }
     public void ApplyGravity()

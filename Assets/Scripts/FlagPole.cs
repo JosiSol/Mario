@@ -6,12 +6,24 @@ public class FlagPole : MonoBehaviour
     public Transform flag;
     public Transform poleBottom;
     public Transform castle;
-    public float speed = 6f;
+    public float speed = 7f;
+    public new AudioSource audio;
+    public AudioClip levelCompleteSound;
+
+    void Awake()
+    {
+        audio = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            if (BackgroundMusic.Instance != null)
+            {
+                BackgroundMusic.Instance.StopMusic();
+            }
+            audio.PlayOneShot(levelCompleteSound);
             StartCoroutine(Move(flag, poleBottom.position));
             StartCoroutine(LevelComplete(collision.transform));
         }
@@ -28,6 +40,10 @@ public class FlagPole : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
+        if (BackgroundMusic.Instance != null)
+        {
+            BackgroundMusic.Instance.PlayMusic();
+        }
         // Implement this to change levels when flagpole is touched
         GameManager.Instance.NextLevel();
     }

@@ -8,6 +8,7 @@ public class Pipe : MonoBehaviour
     public Vector3 exit = Vector3.zero;
     public Transform connection;
     public AudioSource pipeEnterSound;
+    public AudioClip audioClip;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -24,7 +25,7 @@ public class Pipe : MonoBehaviour
     {
         if (pipeEnterSound != null)
         {
-            pipeEnterSound.Play();
+            pipeEnterSound.PlayOneShot(audioClip);
         }
 
         player.GetComponent<PlayerMovement>().enabled = false;

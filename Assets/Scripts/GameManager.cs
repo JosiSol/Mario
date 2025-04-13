@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,8 +9,13 @@ public class GameManager : MonoBehaviour
     public int stage { get; private set; }
     public int lives { get; private set; }
     public int coins { get; private set; }
+    public new AudioSource audio;
+    public AudioClip coinClip;
+    public AudioClip oneUpClip;
+
     private void Awake()
     {
+        audio = GetComponent<AudioSource>();
         if (Instance != null){
             DestroyImmediate(gameObject);
         } else{
@@ -42,15 +48,25 @@ public class GameManager : MonoBehaviour
     }
     public void ResetLevel(float delay)
     {
-        Invoke(nameof(ResetLevel), delay);
+        StartCoroutine(ResetCoroutine(delay));
     }
-    public void ResetLevel()
+
+    private IEnumerator ResetCoroutine(float delay)
     {
+        yield return new WaitForSeconds(delay);
         lives--;
         if (lives > 0){
             LoadLevel(world, stage);
         } else {
             GameOver();
+            yield break;
+        }
+
+        yield return new WaitForSeconds(0.1f);
+
+        if (BackgroundMusic.Instance != null)
+        {
+            BackgroundMusic.Instance.PlayMusic();
         }
     }
     private void GameOver()
@@ -80,6 +96,7 @@ public class GameManager : MonoBehaviour
     */
     public void AddCoin()
     {
+        audio.PlayOneShot(coinClip);
         coins++;
         if (coins == 100)
         {
@@ -89,6 +106,7 @@ public class GameManager : MonoBehaviour
     }
     public void AddLives()
     {
+        audio.PlayOneShot(oneUpClip);
         lives++;
     }
 }

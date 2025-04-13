@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -14,9 +15,15 @@ public class Player : MonoBehaviour
     public bool dead => deathAnimation.enabled;
     private bool isAnimating = false;
     public bool starpower {get; private set;}
+    public new AudioSource audio;
+    public AudioClip powerUpClip;
+    public AudioClip powerDownClip;
+    public AudioClip starPowerClip;
+    public AudioClip deathClip;
 
     private void Awake()
     {
+        audio = GetComponent<AudioSource>();
         deathAnimation = GetComponent<DeathAnimation>();
         playerMovement = GetComponent<PlayerMovement>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
@@ -49,6 +56,10 @@ public class Player : MonoBehaviour
         capsuleCollider.size = new Vector2(1f, 1f);
         capsuleCollider.offset = new Vector2(0f, 0f);
 
+        if (BackgroundMusic.Instance != null) {
+            BackgroundMusic.Instance.StopMusic();
+        }
+        StartCoroutine(PlaySoundAndDisableMusic(powerDownClip));
         StartCoroutine(ScaleAnimation());
     }
     public void Grow()
@@ -61,6 +72,10 @@ public class Player : MonoBehaviour
         capsuleCollider.size = new Vector2(1f, 2f);
         capsuleCollider.offset = new Vector2(0f, 0.5f);
 
+        if (BackgroundMusic.Instance != null) {
+            BackgroundMusic.Instance.StopMusic();
+        }
+        StartCoroutine(PlaySoundAndDisableMusic(powerUpClip));
         StartCoroutine(ScaleAnimation());
     }
     private IEnumerator ScaleAnimation()
@@ -91,12 +106,20 @@ public class Player : MonoBehaviour
         bigRenderer.enabled = false;
         deathAnimation.enabled = true;
 
-        GameManager.Instance.ResetLevel(3f);   
+        if (BackgroundMusic.Instance != null) {
+            BackgroundMusic.Instance.StopMusic();
+        }
+        StartCoroutine(PlaySoundAndDisableMusic(deathClip));
+        GameManager.Instance.ResetLevel(4f);   
     }
-    public void StarPower(float duration = 8f)
+    public void StarPower(float duration = 12.5f)
     {
         starpower = true;
 
+        if (BackgroundMusic.Instance != null) {
+            BackgroundMusic.Instance.StopMusic();
+        }
+        StartCoroutine(PlaySoundAndDisableMusic(starPowerClip));
         StartCoroutine(StarPowerAnimation(duration));
     }
     private IEnumerator StarPowerAnimation(float duration)
@@ -116,5 +139,15 @@ public class Player : MonoBehaviour
         activeRenderer.spriteRenderer.color = Color.white;
         starpower = false;
         
+    }
+    private IEnumerator PlaySoundAndDisableMusic(AudioClip clip)
+    {
+        audio.PlayOneShot(clip);
+
+        yield return new WaitForSeconds(clip.length);
+
+        if (BackgroundMusic.Instance != null){
+            BackgroundMusic.Instance.PlayMusic();
+        }
     }
 }
