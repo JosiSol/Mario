@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public int world { get; private set; }
     public int stage { get; private set; }
-    public int lives { get; private set; }
-    public int coins { get; private set; }
+    public int lives {get; private set; }
+    public int coins {get; private set; }
     public new AudioSource audio;
     public AudioClip coinClip;
     public AudioClip oneUpClip;
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
 
         if (BackgroundMusic.Instance != null)
         {
-            BackgroundMusic.Instance.PlayMusic();
+            BackgroundMusic.Instance.PlayMusic(MusicType.Background);
         }
     }
     private void GameOver()

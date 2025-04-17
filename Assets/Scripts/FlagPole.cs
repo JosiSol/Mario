@@ -42,9 +42,10 @@ public class FlagPole : MonoBehaviour
 
         if (BackgroundMusic.Instance != null)
         {
-            BackgroundMusic.Instance.PlayMusic();
+            BackgroundMusic.Instance.PlayMusic(MusicType.Background);
         }
         // Implement this to change levels when flagpole is touched
+        yield return new WaitForSeconds(1f);
         GameManager.Instance.NextLevel();
     }
     private IEnumerator Move(Transform subject, Vector3 position)

@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class Pipe : MonoBehaviour
@@ -25,7 +26,17 @@ public class Pipe : MonoBehaviour
     {
         if (pipeEnterSound != null)
         {
-            pipeEnterSound.PlayOneShot(audioClip);
+            pipeEnterSound.clip = audioClip;
+            pipeEnterSound.Play();
+        }
+        
+        if (connection.position.y < 0f)
+        {
+            BackgroundMusic.Instance.PlayMusic(MusicType.Underground);
+        }
+        else
+        {
+            BackgroundMusic.Instance.PlayMusic(MusicType.Background);
         }
 
         player.GetComponent<PlayerMovement>().enabled = false;

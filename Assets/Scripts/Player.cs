@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using static MusicType;
 
 public class Player : MonoBehaviour
 {
@@ -147,7 +148,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(clip.length);
 
         if (BackgroundMusic.Instance != null){
-            BackgroundMusic.Instance.PlayMusic();
+            BackgroundMusic.Instance.PlayMusic(MusicType.Background);
         }
     }
 }
