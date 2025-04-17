@@ -40,8 +40,12 @@ cd Mario
 | Jump | Space |
 
 ## 📸 Screenshots
-| <img width="683" alt="Screenshot 2025-04-17 at 9 08 43 at night" src="https://github.com/user-attachments/assets/cbf7dfb0-5a87-4a5a-998d-fbd73778a388" /> | <img width="688" alt="Screenshot 2025-04-17 at 9 08 05 at night" src="https://github.com/user-attachments/assets/1698680c-6cf2-4d94-b153-a69f8b715f00" /> |
-
+<table>
+  <tr>
+    <td><img width="683" alt="Screenshot 2025-04-17 at 9 08 43 at night" src="https://github.com/user-attachments/assets/cbf7dfb0-5a87-4a5a-998d-fbd73778a388" /></td>
+    <td><img width="688" alt="Screenshot 2025-04-17 at 9 08 05 at night" src="https://github.com/user-attachments/assets/1698680c-6cf2-4d94-b153-a69f8b715f00" /></td>
+  </tr>
+</table>
 
 
 ## 🔧 How to Build for Windows & Mac
