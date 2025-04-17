@@ -7,7 +7,8 @@ Welcome to the **Super Mario Unity Clone**! This project is a recreation of the 
 ✅ **Side-scrolling levels** with pipes, bricks, and power-ups  
 ✅ **Enemy AI** that patrols the level    
 ✅ **Optimized performance** for smooth gameplay   
-✅ **Classic Animations and Sound Effects** for an immersive experience 
+✅ **Classic Animations and Sound Effects** for an immersive experience **("Needs Fixing")**  
+✅ **Coin collection system** with score tracking with UI elements
 
 ## 🛠️ Technologies Used
 - **Unity**
@@ -39,7 +40,8 @@ cd Mario
 | Jump | Space |
 
 ## 📸 Screenshots
-<img width="3600" alt="1-1 Grid" src="https://github.com/user-attachments/assets/79f76ad4-de20-486c-b4db-feb2f1fc53c5" />
+<img width="683" alt="Screenshot 2025-04-17 at 9 08 43 at night" src="https://github.com/user-attachments/assets/cbf7dfb0-5a87-4a5a-998d-fbd73778a388" />
+<img width="688" alt="Screenshot 2025-04-17 at 9 08 05 at night" src="https://github.com/user-attachments/assets/1698680c-6cf2-4d94-b153-a69f8b715f00" />
 
 
 
@@ -55,7 +57,6 @@ cd Mario
 - **Multiple stages and worlds** 
 - **Saving & loading system**
 - **Game Over Screen**
-- **Coin collection system** with score tracking
 
 ## 🤝 Contributing
 Pull requests are welcome! Please follow these steps:
